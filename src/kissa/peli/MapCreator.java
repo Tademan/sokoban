@@ -24,17 +24,18 @@ public class MapCreator {
         Random r = new Random();
 
        
-        for (int i = 7; i < 10; i++) {
-            File file = new File("kartta"+Integer.toHexString(i)+".dat");
+        for (int i = 0; i < 100; i++) {
+            File file = new File("kartat/kartta"+String.format("%03d", i)+".dat");
              Map map = new Map(30, 30, 50, 5, 5);
                for(int j = 0; j<map.getHeight();j++){
                    for(int k = 0; k<map.getWidth();k++){
                        map.setNode(j, k, NodeType.WALL);
                    }
                }
-               map.setNode(i, 0, NodeType.AIR);
+               
             try (FileOutputStream o = new FileOutputStream(file)) {
                 map.writeToStream(o);
+            
             }
         }
 

@@ -23,7 +23,7 @@ import javax.swing.JFrame;
 public class Game extends Canvas {
 
     static int kartanNumero = 0;
-    private static File MAP_FILE = new File("kartta" + Integer.toString(kartanNumero) + ".dat");
+    private static File MAP_FILE = new File("kartat/kartta" + String.format("%03d", kartanNumero) + ".dat");
     Map map;
     Ukkeli pekka;
     int pisteet;
@@ -122,7 +122,7 @@ public class Game extends Canvas {
     private void update() {
         if (uudestaan) {
 
-            try (FileInputStream i = new FileInputStream(new File("kartta" + Integer.toString(kartanNumero) + ".dat"))) {
+            try (FileInputStream i = new FileInputStream(new File("kartat/kartta" + String.format("%03d", kartanNumero) + ".dat"))) {
                 map = Map.readFromStream(i);
                 pekka.setX(map.getPlayerX());
                 pekka.setY(map.getPlayerY());
